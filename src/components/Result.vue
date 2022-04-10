@@ -51,12 +51,13 @@
         </div>
 
         <div class="right">
-          <img
+          <div class="result-banner">
+              <img
             src="/images/result-img.png"
             alt=""
             title=""
-            class="result-banner"
           />
+          </div>
           
      
 
@@ -156,6 +157,16 @@ setup() {
     .result-banner {
       left: -90px;
       margin-bottom: 2em;
+       border-radius: 30px;
+      overflow: hidden;
+      img {
+        transition: transform 1s ease;
+        border-radius: 30px;
+        &:hover {
+           transform: scale(1.1);
+        }
+      }
+     
     }
   }
 }
