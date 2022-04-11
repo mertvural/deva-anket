@@ -199,7 +199,7 @@ p.line {
 }
 
 .category-list {
-  padding: 0;
+  padding: 0 90px 0 0;
   margin: 0;
   li {
     font-size: 1.3em;
@@ -214,6 +214,12 @@ p.line {
   }
   & + .category-list {
       margin-top: 3.5em;
+      li {
+        border-color:#D8B828;
+        &::before {
+          background-color: #D8B828;
+        }
+      }
   }
 }
 </style>
