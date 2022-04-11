@@ -225,9 +225,12 @@ p.line {
 
 @media screen and (max-width:1024px) {
 .result {
-  .left {padding: 2em;}
+  .left {padding: 2em;order:2}
+  .right {order:1}
   .wrapper {
-    display: block;
+    margin-top: 0;
+    display: flex;
+    flex-flow: column nowrap;
     .result-banner {
       left:0
     }

@@ -50,4 +50,11 @@ setup() {
     }
   }
 }
+
+@media screen and (max-width:480px) {
+  .bar .num {
+      background-size: 52px;height: 43px;
+  }
+}
+
 </style>
