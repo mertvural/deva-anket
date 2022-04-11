@@ -14,7 +14,6 @@
 </template>
 
 <script>
-alert("adad")
 import Step from "./components/Step.vue";
 import Header from "./components/Header.vue";
 import Result from "./components/Result.vue";
