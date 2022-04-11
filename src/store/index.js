@@ -2,6 +2,247 @@ import { createStore } from "vuex";
 
 export const store = createStore({
   state: {
+    cities : [
+      "Adana",
+      "Adıyaman",
+      "Afyon",
+      "Ağrı",
+      "Amasya",
+      "Ankara",
+      "Antalya",
+      "Artvin",
+      "Aydın",
+      "Aksaray",
+      "Ardahan",
+      "Balıkesir",
+      "Bilecik",
+      "Bingöl",
+      "Bitlis",
+      "Bayburt",
+      "Bolu",
+      "Batman",
+      "Burdur",
+      "Bartın",
+      "Bursa",
+      "Çanakkale",
+      "Çankırı",
+      "Çorum",
+      "Denizli",
+      "Diyarbakır",
+      "Düzce",
+      "Edirne",
+      "Elazığ",
+      "Erzincan",
+      "Erzurum",
+      "Eskişehir",
+      "Gaziantep",
+      "Giresun",
+      "Gümüşhane",
+      "Hakkari",
+      "Hatay",
+      "Isparta",
+      "Mersin",
+      "Iğdır",
+      "İstanbul",
+      "İzmir",
+      "Kars",
+      "Kastamonu",
+      "Kayseri",
+      "Kırklareli",
+      "Kırşehir",
+      "Kocaeli",
+      "Konya",
+      "Kütahya",
+      "Malatya",
+      "Manisa",
+      "Kahramanmaraş",
+      "Karabük",
+      "Kilis",
+      "Karaman",
+      "Kırıkkale",
+      "Mardin",
+      "Muğla",
+      "Muş",
+      "Nevşehir",
+      "Niğde",
+      "Ordu",
+      "Osmaniye",
+      "Rize",
+      "Sakarya",
+      "Samsun",
+      "Siirt",
+      "Sinop",
+      "Sivas",
+      "Tekirdağ",
+      "Tokat",
+      "Trabzon",
+      "Tunceli",
+      "Şanlıurfa",
+      "Şırnak",
+      "Uşak",
+      "Van",
+      "Yozgat",
+      "Yalova",
+      "Zonguldak",
+    ],
+    jobs : ["Yazılımcı", "İşletme", "Esnaf"],
+    formRadioDatas1 : [
+      {
+        id: 1,
+        catID: 1,
+        text: "Çocuklarımın geleceği",
+      },
+      {
+        id: 2,
+        catID: 3,
+        text: "İstediğim gibi yaşayamamak",
+      },
+      {
+        id: 3,
+        catID: 2,
+        text: "Yüksek fiyatlar",
+      },
+      {
+        id: 4,
+        catID: 5,
+        text: "Özgürce kendimi ifade edememek",
+      },
+      {
+        id: 5,
+        catID: 3,
+        text: "Barınma sorunu",
+      },
+      {
+        id: 6,
+        catID: 3,
+        text: "Emekli olarak geçinememek",
+      },
+      {
+        id: 7,
+        catID: 4,
+        text: "Tarım politikası",
+      },
+      {
+        id: 8,
+        catID: 3,
+        text: "Engelli olmak",
+      },
+      {
+        id: 9,
+        catID: 5,
+        text: "Adalet eksikliği",
+      },
+      {
+        id: 10,
+        catID: 2,
+        text: "Esnaf olarak var olmaya çalışmak",
+      },
+      {
+        id: 11,
+        catID: 3,
+        text: "İşsizlik",
+      },
+      {
+        id: 12,
+        catID: 3,
+        text: "Kadın olarak kendimi güvende hissetmemek",
+      },
+      {
+        id: 13,
+        catID: 4,
+        text: "Çiftçi olarak üretmemek",
+      },
+      {
+        id: 14,
+        catID: 5,
+        text: "Genç olarak ülkeye güvenmemek",
+      },
+    ],
+    formRadioDatas2 : [
+      {
+        id: 15,
+        catID: 2,
+        text: "Ekonomik durgunluk",
+      },
+
+      {
+        id: 16,
+        catID: 5,
+        text: "Adalet, hukuk ve yargı sorunu",
+      },
+      {
+        id: 17,
+        catID: 1,
+        text: "Eğitim ve öğretim sorunu",
+      },
+      {
+        id: 18,
+        catID: 6,
+        text: "Cumhurbaşkanlığı Hükümet sistemi",
+      },
+      {
+        id: 19,
+        catID: 4,
+        text: "Tarım ve üretim",
+      },
+      {
+        id: 20,
+        catID: 2,
+        text: "Hayat pahalılığı",
+      },
+      {
+        id: 21,
+        catID: 5,
+        text: "Denge ve denetleme ve kuvvetler ayrılığı",
+      },
+      {
+        id: 22,
+        catID: 3,
+        text: "Engelli sorunu",
+      },
+      {
+        id: 23,
+        catID: 3,
+        text: "Kadına yönelik şiddet ve kadın-erkek eşitliği",
+      },
+      {
+        id: 24,
+        catID: 7,
+        text: "İklim krizi ve çevre sorunu",
+      },
+      {
+        id: 25,
+        catID: 5,
+        text: "Liyakat sorunu",
+      },
+      {
+        id: 26,
+        catID: 3,
+        text: "Sağlık, aile ve çocuk politikaları sorunu",
+      },
+    ],
+    formRadioDatas3 : [
+      {
+        id: 27,
+        text: "Özgür",
+      },
+      {
+        id: 28,
+        text: "Zengin",
+      },
+      {
+        id: 29,
+        text: "Güçlü",
+      },
+      {
+        id: 30,
+        text: "Mutlu",
+      },
+      {
+        id: 31,
+        text: "Huzurlu",
+      },
+    ],
     activeScene: 1,
     totalScene: 4,
     categories: [
@@ -148,17 +389,32 @@ export const store = createStore({
     selectedDatas : []
   },
   getters: {
-    activeScene: (state) => {
+    getActiveScene: (state) => {
       return state.activeScene;
     },
-    totalScene: (state) => {
+    getTotalScene: (state) => {
       return state.totalScene;
     },
-    categories: (state) => {
+    getCategories: (state) => {
       return state.categories;
     },
     getDatas: (state) => {
       return state.datas;
+    },
+    getCities: (state) => {
+      return state.cities;
+    },
+    getJobs: (state) => {
+      return state.jobs;
+    },
+    getformRadioDatas1: (state) => {
+      return state.formRadioDatas1;
+    },
+    getformRadioDatas2: (state) => {
+      return state.formRadioDatas2;
+    },
+    getformRadioDatas3: (state) => {
+      return state.formRadioDatas3;
     }
   },
   mutations: {

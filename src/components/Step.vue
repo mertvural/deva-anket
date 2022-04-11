@@ -16,8 +16,8 @@ setup() {
   const store = useStore();
   
   return {
-    getActiveScene: computed(() => store.state.activeScene),
-    getTotalScene: computed(() => store.state.totalScene)
+    getActiveScene: computed(() => store.getters.getActiveScene),
+    getTotalScene: computed(() => store.getters.getTotalScene)
   }
 
 }

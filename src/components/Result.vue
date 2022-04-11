@@ -73,8 +73,6 @@
             </template>
           </ul>
          </template>
-
-
            
         </div>
       </div>
@@ -93,7 +91,7 @@ setup() {
 
   const store = useStore();
 
-  let categories = store.getters.categories;
+  let categories = store.getters.getCategories;
 
 
   
@@ -204,7 +202,7 @@ p.line {
   padding: 0;
   margin: 0;
   li {
-    font-size: 1.4em;
+    font-size: 1.3em;
     list-style: none;
     @include bottomLine;
     padding-bottom: 15px;
