@@ -222,4 +222,19 @@ p.line {
       }
   }
 }
+
+@media screen and (max-width:1024px) {
+.result {
+  .left {padding: 2em;}
+  .wrapper {
+    display: block;
+    .result-banner {
+      left:0
+    }
+    .category-list {
+      padding-right: 0;
+    }
+  }
+}
+}
 </style>

@@ -1,6 +1,6 @@
 $colorblack : #000;
-$container : 1307px;
-$containerxl : 1518px;
+$container : 1337px;
+$containerxl : 1548px;
 $color-bg : #0B62A3;
 $color-text : #fff;
 $activated : #41BDC7;
@@ -46,11 +46,13 @@ h6 {
 
 .container {
   max-width: $container;
-  margin: 0 auto
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .container-xl {
   max-width: $containerxl;
+  padding: 0 15px;
   margin: 0 auto
 }
 
@@ -65,10 +67,10 @@ header {
 
 main::before {
   content: "";
-  background: url("../images/leaf.svg") no-repeat right top;
+  background: url("../images/leaf.png") no-repeat right top;
   position: absolute;
-  right: -260px;
-  top: -80px;
+  right: 0;
+  top: -135px;
   width: 670px;
   height: 300px;
   z-index: -1;
@@ -269,3 +271,24 @@ select {
 }
 
 .text-center {text-align: center;}
+
+@media screen and (max-width:1400px) {
+ main::before {transform: scale(.3);right: -148px;width: 428px;top:-143px;height: 225px;}
+}
+
+@media screen and (max-width:1024px) {
+  h2 {margin-right: 0;font-size: 20px;
+  &.line {margin-bottom: 20px;padding-bottom: 20px;}
+  }
+  body {font-size: 12px;}
+  .form {display: block;
+    .item {max-width: 100%;
+      &+.item {margin-top: 15px;}
+    }
+  }
+  .logo {max-width: 120px;}
+  .form-control, .btn {height: 45px;}
+  .statistics {
+    .num {font-size: 3em !important;}
+  }
+ }
