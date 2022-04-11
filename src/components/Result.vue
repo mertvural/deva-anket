@@ -6,7 +6,7 @@
         verdiğiniz yanıtlar için teşekkür ederiz. <br />
         <strong> Deva olarak çözümlerimiz hazır.</strong>
       </h2>
-
+      
       <div class="wrapper">
         <div class="left">
           <p>
