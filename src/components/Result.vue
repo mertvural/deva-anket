@@ -1,243 +1,285 @@
 <template>
   <section>
     <div class="result">
-      <h2 class="text-center f400">
-        Değerli vaktinizden ayırarak <br />
-        verdiğiniz yanıtlar için teşekkür ederiz. <br />
-        <strong> Deva olarak çözümlerimiz hazır.</strong>
-      </h2>
-      
-      <div class="wrapper">
-        <div class="left">
-          <p>
-            <strong>{{datas.age}} yaşında</strong> {{datas.city}}’da yaşayan bir {{datas.job}} olarak. Daha
-            zengin, mutlu ve üretken bir Türkiye’de yaşamak istediğini
-            biliyoruz.
-          </p>
+      <div class="top">
+        <a href="">
+          <img src="../assets/images/logo-transparent.png" class="d-block" />
+        </a>
+        <div class="btn-share">
+          <span class="text" @click="showShare = true" v-show="!showShare"
+            >DEVA ÇÖZÜMLERİNİ SEN DE PAYLAŞ</span
+          >
 
-          <p>
-            <strong>DEVA Partisi</strong> olarak biz de seninle aynı hayali
-            paylaşıyoruz. Onun için de işi bilen ekibimizle gece gündüz
-            çalışarak yol haritamızı oluşturuyoruz.
-          </p>
+          <ul class="social-sub" v-show="showShare">
+            <li>
+              <a
+                class="share-btn share-btn-branded share-btn-twitter"
+                :href="
+                  'https://twitter.com/share?url=https://anket.devahazir.com/?uid=' +
+                  datas.uid
+                "
+                title="Paylaş Twitter"
+              >
+              </a>
+            </li>
 
-          <p>
-            <strong
-              >İktidara geldiğimiz ilk gün hayata geçirmek üzere planlarımız
-              hazır.</strong
-            >
-          </p>
-
-          <p>Daha güzel günlerde yaşamak dileği ile…</p>
-
-          <strong>Ali Babacan</strong>
-          <br /><br />
-
-          <div class="statistics one">
-            <div class="num">%50</div>
-            <p class="line">
-              Çiftçilerin kullandığı gübre maliyetinin
-              <strong>%50’si destek</strong> olarak geri vereceğiz
-            </p>
-          </div>
-
-          <div class="statistics two">
-            <div class="num">2 YIL</div>
-            <p class="line">
-              Çiftçierin borçlarını en a
-              <strong>2 yıl faizsiz erteleyeceğiz</strong>
-            </p>
-          </div>
+            <li>
+              <a
+                class="share-btn share-btn-branded share-btn-facebook"
+                :href="
+                  'https://www.facebook.com/sharer/sharer.php?u=https://anket.devahazir.com/?uid=' +
+                  datas.uid
+                "
+                title="Paylaş Facebook"
+              >
+              </a>
+            </li>
+            <li>
+              <a
+                class="share-btn share-btn-branded share-btn-linkedin"
+                :href="
+                  'https://www.linkedin.com/shareArticle?mini=true&url=https://anket.devahazir.com/?uid=' +
+                  datas.uid
+                "
+                title="Paylaş LinkedIn"
+              >
+              </a>
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <div class="right">
-          <div class="result-banner">
-              <img
-            src="/images/result-img.png"
-            alt=""
-            title=""
-          />
-          </div>
-          
-     
+      <picture>
+        <img src="../assets/images/banner-pazar-secimolsa.png" />
+      </picture>
 
-         <template v-for="(datas, index) in selectedDatas" :key="index">
+      <article class="desc include-leaf">
+        <p>
+          <strong>Değerli vatandaşım, </strong>
+        </p>
+        <p>
+          {{ datas.age }} yaşında {{ datas.city }}’da yaşayan bir
+          {{ datas.job }} mesleğini yerine getiren biri olarak. Daha
+          zengin, mutlu ve üretken bir Türkiye’de yaşamak istediğini biliyoruz.
+        </p>
+        <p>
+          DEVA Partisi olarak biz de seninle aynı hayali paylaşıyoruz. Onun için
+          de yol haritamızı oluşturuyoruz. İşi bilen ekibimizle gece gündüz
+          çalışıyoruz. Planlarımız hazır. İktidara gelir gelmez uygulayacağız.
+        </p>
+        <p>
+          <strong>Derdine DEVA olacak çözümlerimiz:</strong>
+        </p>
+      </article>
 
-           <ul class="category-list" v-if="datas">
-            <template v-for="(cat, index) in categories" :key="index">
-              <template v-if="cat.catID === datas">
-               <li v-for="(answers, index) in cat.answers" :key="index">
-                 {{answers.text}}
-               </li>
+      <article>
+        <template v-for="(datas, index) in selectedDatas">
+          <ul class="category-list" v-if="datas" :key="index">
+            <li class="title">
+              <template v-for="(cat, index) in categories">
+                <template v-if="cat.id === datas">
+                  <h2 :key="index">
+                    {{ cat.text }}
+                  </h2>
+                </template>
+              </template>
+            </li>
+            <template v-for="cat in categories">
+              <template v-if="cat.id === datas">
+                <template v-for="(answers, index) in cat.answers">
+                  <li :key="index" v-if="index <= 3">
+                    {{ answers.text }}
+                    {{ setShareText(answers.text) }}
+                  </li>
+                </template>
+              </template>
+            </template>
+            <template v-for="(cat, index) in categories">
+              <template v-if="cat.id === datas">
+                <a :href="getButtons(cat.catID)"
+                target="_blank"
+                class="btn btn-blue btn-sm"
+                :key="index">TÜM ÇÖZÜMLERİMİZ</a>
               </template>
             </template>
           </ul>
-         </template>
-           
-        </div>
+        </template>
+      </article>
+
+      <article class="desc mb-1">
+        <p>Daha güzel günlerde yaşamak dileği ile…</p>
+        <p>
+          <strong>Ali Babacan</strong>
+        </p>
+      </article>
+
+      <div class="btn-share mb-1">
+        <span class="text" @click="showShare = true" v-show="!showShare"
+          >DEVA ÇÖZÜMLERİNİ SEN DE PAYLAŞ</span
+        >
+
+        <ul class="social-sub" v-show="showShare">
+          <li>
+            <a
+              class="share-btn share-btn-branded share-btn-twitter"
+              :href="
+                'https://twitter.com/share?url=https://anket.devahazir.com/?uid=' +
+                datas.uid
+              "
+              title="Paylaş Twitter"
+            >
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="share-btn share-btn-branded share-btn-facebook"
+              :href="
+                'https://www.facebook.com/sharer/sharer.php?u=https://anket.devahazir.com/?uid=' +
+                datas.uid
+              "
+              title="Paylaş Facebook"
+            >
+            </a>
+          </li>
+          <li>
+            <a
+              class="share-btn share-btn-branded share-btn-linkedin"
+              :href="
+                'https://www.linkedin.com/shareArticle?mini=true&url=https://anket.devahazir.com/?uid=' +
+                datas.uid
+              "
+              title="Paylaş LinkedIn"
+            >
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-
-import {useStore} from 'vuex';
-import {computed } from "vue";
-
+import * as firebase from "firebase/app";
+import { computed, onMounted, ref } from 'vue'
+import { useStore } from 'vuex'
+import {firebaseConfig} from '../../firebase-config'
+import { getDatabase, ref as storageRef, set, remove } from "firebase/database";
+import { getAuth, signInAnonymously } from "firebase/auth";
+firebase.initializeApp(firebaseConfig);
+const db = getDatabase();
+const auth = getAuth();
 export default {
+  setup() {
+    const store = useStore();
+    const datas = store.getters.getDatas;
+    let arr = new Array();
+    const categories = store.state.formRadioDatas;
+    const selectedDatas = store.state.selectedDatas;
+    let showShare = ref(false);
+    function setShareText(t) {
+      arr.push(t);
+    }
+    let getButtons = function (catID) {
+      switch (catID) {
+        case 1:
+          return "https://devahazir.devapartisi.org.tr/deva-iktidarinin-yarina-atilim-eylem-plani/";
+          break;
+        case 2:
+          return "https://devahazir.devapartisi.org.tr/deva-iktidarinin-ekonomi-eylem-plani/";
+          break;
+        case 3:
+          return "https://devahazir.devapartisi.org.tr/deva-iktidarinin-sosyal-politikalar-eylem-plani/";
+          break;
+        case 4:
+          return "https://devahazir.devapartisi.org.tr/deva-iktidarinin-tarim-eylem-plan/";
+          break;
+        case 5:
+          return "https://devahazir.devapartisi.org.tr/deva-iktidarinin-demokrasi-eylem-plani/";
+          break;
+        case 6:
+          return "https://devahazir.devapartisi.org.tr/deva-iktidarinin-adil-yargi-eylem-plani/";
+          break;
+        case 7:
+          return "https://devahazir.devapartisi.org.tr/deva-iktidarinin-afet-eylem-plani/";
+          break;
+        case 8:
+          return "https://devahazir.devapartisi.org.tr/deva-iktidarinin-yarina-atilim-eylem-plani/";
+          break;
+      }
+    };
 
-setup() {
+    onMounted(() => {
+      (function () {
+        var shareButtons = document.querySelectorAll(".share-btn");
 
-  const store = useStore();
+        if (shareButtons) {
+          [].forEach.call(shareButtons, function (button) {
+            button.addEventListener("click", function (event) {
+              var width = 650,
+                height = 450;
 
-  let categories = store.getters.getCategories;
+              event.preventDefault();
 
+              window.open(
+                this.href,
+                "Share Dialog",
+                "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" +
+                  width +
+                  ",height=" +
+                  height +
+                  ",top=" +
+                  (screen.height / 2 - height / 2) +
+                  ",left=" +
+                  (screen.width / 2 - width / 2)
+              );
+            });
+          });
+        }
+      })();
+      signInAnonymously(auth)
+        .then(() => {
+          set(storageRef(db, "users/" + datas.uid), {
+            age: datas.age,
+            job: datas.job,
+            city: datas.city,
+            text1: `
+              ${arr[0]}
+            `,
+            text2: `
+              ${arr[1]}
+            `,
+            text3: `
+              ${arr[2]}
+            `,
+            text4: `
+              ${arr[arr.length - 1]}
+            `,
+            text5: `
+              ${arr[arr.length - 2]}
+            `,
+            text6: `
+              ${arr[arr.length - 3]}
+            `,
+            shareImg: `${categories[selectedDatas[0] - 1].imageId}.png`,
+          });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // alert(errorMessage);
+        });
+    });
 
-  
-  return {
-    datas: computed(() => store.state.datas),
-    categories: computed(() => store.state.categories),
-    selectedDatas: computed(() => store.state.selectedDatas)
-  }
-
-}
-
+    return {
+      datas: computed(() => store.state.datas),
+      categories: computed(() => store.state.formRadioDatas),
+      selectedDatas: computed(() => store.state.selectedDatas),
+      setShareText,
+      showShare,
+      getButtons
+    };
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-@mixin bottomLine {
-  border-bottom: 1px solid #fff;
-  &::before {
-    content: "";
-    width: 116px;
-    height: 5px;
-    background-color: #fff;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-}
-
-.f400 {
-  font-weight: 400;
-}
-.result {
-  .wrapper {
-    display: grid;
-    grid-template-columns: 486px 1fr;
-    grid-gap: 20px;
-    margin-top: 3em;
-  }
-  .left {
-    border-radius: 30px;
-    border: 2px solid #1784b1;
-    padding: 2em 80px 2em 2em;
-    font-size: 1.4em;
-    p {
-      padding-bottom: 20px;
-      &:first-child {
-        &::after {
-          content: "";
-          width: 10px;
-          height: 24px;
-          background-color: #fff;
-          position: absolute;
-          left: calc(-2em - 1px);
-          top: 3px;
-        }
-      }
-    }
-  }
-  .right {
-    padding-top: 2em;
-    .result-banner {
-      left: -90px;
-      margin-bottom: 2em;
-       border-radius: 30px;
-      overflow: hidden;
-      img {
-        transition: transform 1s ease;
-        border-radius: 30px;
-        &:hover {
-           transform: scale(1.1);
-        }
-      }
-     
-    }
-  }
-}
-
-strong {
-  font-weight: 700;
-}
-
-.statistics {
-  &.one .num {
-    font-weight: 700;
-    color: #41bdc7;
-    font-size: 5.5em;
-    line-height: 1;
-  }
-  &.two .num {
-    font-weight: 700;
-    color: #a7ad37;
-    font-size: 4.5em;
-    line-height: 1;
-  }
-  p {
-    font-size: 0.8em;
-  }
-  & + .statistics {
-    margin-top: 2.5em;
-  }
-}
-
-p.line {
-    @include bottomLine
-}
-
-.category-list {
-  padding: 0 90px 0 0;
-  margin: 0;
-  li {
-    font-size: 1.3em;
-    list-style: none;
-    @include bottomLine;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-color:#41BDC7;
-    &::before {
-        background-color: #41BDC7;
-    }
-  }
-  & + .category-list {
-      margin-top: 3.5em;
-      li {
-        border-color:#D8B828;
-        &::before {
-          background-color: #D8B828;
-        }
-      }
-  }
-}
-
-@media screen and (max-width:1024px) {
-.result {
-  .left {padding: 2em;order:2}
-  .right {order:1}
-  .wrapper {
-    margin-top: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    .result-banner {
-      left:0
-    }
-    .category-list {
-      padding-right: 0;
-    }
-  }
-}
-}
-</style>

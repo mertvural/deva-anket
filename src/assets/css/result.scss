@@ -1,0 +1,281 @@
+@mixin bottomLine {
+  border-bottom: 1px solid #fff;
+
+  &::before {
+    content: "";
+    width: 100px;
+    height: 4px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.btn-share {
+  height: 40px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+
+  .text {
+    max-width: 280px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 40px 0 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    z-index: 1;
+    background: url("../images/icon-share.png") no-repeat right 20px center #44bac6;
+    border-radius: 43px;
+    background-size: 10px;
+
+    &:hover {
+      opacity: .90;
+    }
+  }
+
+  .social-sub {
+    transition: all .3s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+
+    li {
+      list-style: none;
+
+      a {
+        width: 40px;
+        height: 40px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        display: block;
+
+        &:hover {
+          opacity: .8;
+        }
+
+        &.share-btn-twitter {
+          background-image: url("../images/icon-twitter.png");
+        }
+
+        &.share-btn-facebook {
+          background-image: url("../images/icon-face.png");
+        }
+
+        &.share-btn-linkedin {
+          background-image: url("../images/icon-linkedin.png");
+        }
+      }
+    }
+  }
+}
+
+
+.result {
+  color: #222;
+
+  .top {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  article.desc {
+    font-size: 1.3em;
+    text-shadow: 0 0 0 #222;
+
+    p {
+      margin-top: 1em;
+    }
+  }
+
+  article.include-leaf {
+    padding-right: 0vw;
+  }
+
+}
+
+.isResultPage {
+  overflow-x: hidden;
+  main {
+    &::before {
+      content: "";
+      background: url(../images/leaf-blue.png) no-repeat right center;
+      background-size: contain;
+      position: absolute;
+      left: 81%;
+      top: 25%;
+      height: 340px;
+      width: 625px;
+    }
+  }
+}
+
+
+
+p.line {
+  @include bottomLine
+}
+
+.category-list {
+  margin: 2.2em 0 0 0;
+  padding: 0;
+
+  li {
+    &:not(.button-area):not(.title) {
+      font-weight: 500;
+      @include bottomLine;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      color: #03649b;
+      font-size: 1em;
+      border-color: #99abb9;
+
+      &::before {
+        background-color: #03649b;
+      }
+    }
+
+    h2 {
+      font-size: 2em;
+      color: #03649b;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+
+.result-socialnext {
+  &>h2 {margin-bottom: 30px;}
+  .wrapper {
+    display: grid;
+    grid-template-columns: 486px 1fr;
+    grid-gap: 20px;
+    margin-top: 3em;
+  }
+
+  .left {
+    border-radius: 30px;
+    border: 2px solid #1784b1;
+    padding: 2em 80px 2em 2em;
+    font-size: 1.4em;
+
+    p {
+      padding-bottom: 20px;
+
+      &:first-child {
+        &::after {
+          content: "";
+          width: 10px;
+          height: 24px;
+          background-color: #fff;
+          position: absolute;
+          left: calc(-2em - 1px);
+          top: 3px;
+        }
+      }
+    }
+  }
+
+  .right {
+    padding-top: 2em;
+
+    .result-banner {
+      left: -90px;
+      margin-bottom: 2em;
+      border-radius: 30px;
+      overflow: hidden;
+      width: 100%;
+      img {
+        transition: transform 1s ease;
+        border-radius: 30px;
+        top: 0px;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .category-list li {
+      @include bottomLine;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      font-size: 1.15em;
+    }
+
+  }
+}
+
+
+
+.statistics {
+  &.one .num {
+    font-weight: 700;
+    color: #41bdc7;
+    font-size: 5.5em;
+    line-height: 1;
+  }
+
+  &.two .num {
+    font-weight: 700;
+    color: #a7ad37;
+    font-size: 4.5em;
+    line-height: 1;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
+
+  &+.statistics {
+    margin-top: 2.5em;
+  }
+}
+
+
+@media screen and (max-width:1400px) {
+  main {
+    &::before {
+      display: none !important;
+    }
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .result-socialnext {
+    .left {
+      padding: 2em;
+      order: 2
+    }
+
+    .right {
+      order: 1
+    }
+
+    .wrapper {
+      margin-top: 0;
+      display: flex;
+      flex-flow: column nowrap;
+
+      .result-banner {
+        left: 0
+      }
+
+      .category-list {
+        padding-right: 0;
+      }
+    }
+  }
+}

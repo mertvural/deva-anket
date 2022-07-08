@@ -6,8 +6,8 @@
 
 <script>
 
-import {useStore} from 'vuex';
-import {computed } from "vue";
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
 
@@ -32,7 +32,7 @@ setup() {
   width: 20%;
   transition: width 1s ease;
   .num {
-    background: url(../images/num.png) no-repeat center center;
+    background: url("../assets/images/num.png") no-repeat center center;
     width: 200px;
     height: 66px;
     position: absolute;
@@ -50,11 +50,9 @@ setup() {
     }
   }
 }
-
 @media screen and (max-width:480px) {
   .bar .num {
       background-size: 52px;height: 43px;
   }
 }
-
 </style>
