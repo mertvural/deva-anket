@@ -59,7 +59,10 @@
         </p>
         <p>
           {{ datas.age }} yaşında {{ datas.city }}’da yaşayan bir
-          {{ datas.job }} mesleğini yerine getiren biri olarak. Daha
+          {{ 
+            jobSelected()
+          }} 
+          olarak. Daha
           zengin, mutlu ve üretken bir Türkiye’de yaşamak istediğini biliyoruz.
         </p>
         <p>
@@ -209,6 +212,21 @@ export default {
       }
     };
 
+    let jobSelected = function() {
+      if(datas.job === "Diğer") {
+        return "Vatandaş"
+      }
+      else if(datas.job === "Ticaret") {
+        return "Ticaretle uğraşan biri"
+      }
+      else if(datas.job === "Bilişim") {
+        return "Bilişimci"
+      }
+      else {
+        return datas.job
+      }
+    }
+
     onMounted(() => {
       (function () {
         var shareButtons = document.querySelectorAll(".share-btn");
@@ -277,7 +295,8 @@ export default {
       selectedDatas: computed(() => store.state.selectedDatas),
       setShareText,
       showShare,
-      getButtons
+      getButtons,
+      jobSelected
     };
   },
 };
